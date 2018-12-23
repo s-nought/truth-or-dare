@@ -28,7 +28,9 @@ export class AppComponent {
   show_loose: string = `<i class="fas fa-chess-pawn fa-lg loser-color fa-fw faa-shake animated"></i>LOSE`;
   show_draw: string = `<i class="fas fa-balance-scale fa-lg draw-color fa-fw faa-float animated"></i>DRAW`;
 
-  loop: number = 0;
+  ngOnInit() {
+    this.reset();
+  }
 
   draw(player: string) {
 
@@ -149,7 +151,6 @@ export class AppComponent {
       }
     }
   }
-
 
   reset() {
     this.click_flg = false;

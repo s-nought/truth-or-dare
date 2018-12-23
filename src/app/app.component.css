@@ -1,0 +1,26 @@
+h1 { font-family: 'Tangerine', cursive; }
+h5, p, button, span, .navbar-brand, #card_title_1 { font-family: 'Sawarabi Mincho', sans-serif; }
+.info-color {color: skyblue}
+
+ul{
+    counter-reset:number; /*数字をリセット*/
+    list-style-type: none!important; /*数字を一旦消す*/
+    padding:0;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+  }
+  ul li{
+    padding: 0.5em 0;
+    position: relative;
+    padding-left: 1.4em;
+    line-height: 1.5em;
+  }
+  ul li:before{
+    counter-increment: number;
+    content: counter(number) ".";
+    position: absolute;
+    left: 0;
+    font-family: 'Bradley Hand','Segoe Script','Segoe Print',sans-serif;/*手書き風のフォント*/
+    font-size: 1.3em;/*フォントサイズ*/
+  }
+  
