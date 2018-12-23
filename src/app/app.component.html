@@ -1,21 +1,88 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <h1>- Truth or Dare? -</h1>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+<div class="container">
+
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="accordion" role="tablist">
+          <div class="card-deck">
+            <div class="card">
+              <div class="card-header" role="tab" id="headingOne">
+                <h5 class="mb-0">
+                  <div id="card_title_1" data-toggle="collapse" href="#rule" aria-expanded="false" aria-controls="rule"
+                    class="collapsed">
+                    <i class="fas fa-info-circle info-color fa-lg fa-fw"></i>Infomation
+                  </div>
+                </h5>
+              </div>
+              <div id="rule" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="card-body">
+                  真実か挑戦か- Truth or Dare? -
+                  <ul>
+                    <li>お互いにカードを引き合う．</li>
+                    <li>カードの数字がより大きい方を引いた者が勝者となり，その一方は敗者となる．ただし，Ace(1)についてはKing(13)よりも大きい数字として扱う．</li>
+                    <li>引いたカードの数字が同じ場合は，再度お互いにカードを引く．</li>
+                    <li>勝者は敗者に対し，任意の質問をし，「真実」か「挑戦」かを選択させる．</li>
+                    <li>敗者が「真実」を選択した場合，敗者は勝者の質問に対し，必ず嘘偽りの無い真実を語らなければならない．</li>
+                    <li>敗者が「挑戦」を選択した場合，勝者は敗者に対して任意の命令を下し，敗者はその命令を必ず実行しなければならない．</li>
+                    <li></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card-deck">
+          <div class="card">
+            <div class="card-header">
+              <div *ngIf="!click_flg; then btnBlock; else resultBlock"></div>
+              <ng-template #btnBlock><button type="button" class="btn btn-outline-danger" (click)="draw('first')">カードを引く</button></ng-template>
+              <ng-template #resultBlock><button class="btn btn-outline-danger" disabled>結果</button></ng-template>
+              <span id="result"></span>
+            </div>
+            <div class="card-body">
+              <div style="text-align:center">
+                <p id="insert"></p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div *ngIf="!click_flg2; then btnBlock2; else resultBlock2"></div>
+              <ng-template #btnBlock2><button type="button" class="btn btn-outline-info" (click)="draw('second')">カードを引く</button></ng-template>
+              <ng-template #resultBlock2><button class="btn btn-outline-info" disabled>結果</button></ng-template>
+              <span id="result2"></span>
+            </div>
+            <div class="card-body">
+              <div style="text-align:center">
+                <p id="insert2"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div *ngIf="click_flg && click_flg2"><button type="button" class="btn btn-success" (click)="reset()">Again</button></div>
+    </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
