@@ -34,6 +34,8 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/truth-or-dare/",
+              "deployUrl": "/truth-or-dare/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
